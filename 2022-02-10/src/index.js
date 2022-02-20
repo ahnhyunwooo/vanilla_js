@@ -1,40 +1,31 @@
-// <⚠️ DONT DELETE THIS ⚠️>
-import "./styles.css";
-const colors = ["#1abc9c", "#3498db", "#9b59b6", "#f39c12", "#e74c3c"];
-// <⚠️ /DONT DELETE THIS ⚠️>
-
-/*
-✅ The text of the title should change when the mouse is on top of it.
-✅ The text of the title should change when the mouse is leaves it.
-✅ When the window is resized the title should change.
-✅ On right click the title should also change.
-✅ The colors of the title should come from a color from the colors array.
-✅ DO NOT CHANGE .css, or .html files.
-✅ ALL function handlers should be INSIDE of "superEventHandler"
-*/
-const title = document.querySelector("h2");
-const superEventHandler = {
-  mouseEnterChangeText: function () {
-    title.innerText = "The mouse is here!";
-    title.style.color = colors[0];
-  },
-  mouseLeaveChangeText: function () {
-    title.innerText = "The mouse is gone!";
-    title.style.color = colors[1];
-  },
-  windowResizeChangeText: function () {
-    title.innerText = "You just resized!";
-    title.style.color = colors[2];
-  },
-  mouseContextMenuChangeText: function () {
-    title.innerText = "That was right click!";
-    title.style.color = colors[3];
+const colors = [
+  "#ef5777",
+  "#575fcf",
+  "#4bcffa",
+  "#34e7e4",
+  "#0be881",
+  "#f53b57",
+  "#3c40c6",
+  "#0fbcf9",
+  "#00d8d6",
+  "#05c46b",
+  "#ffc048",
+  "#ffdd59",
+  "#ff5e57",
+  "#d2dae2",
+  "#485460",
+  "#ffa801",
+  "#ffd32a",
+  "#ff3f34"
+];
+function btnClick() {
+  const choice1 = colors[Math.floor(Math.random() * colors.length)];
+  let choice2 = colors[Math.floor(Math.random() * colors.length)];
+  while(choice1 === choice2) {
+    choice2 = colors[Math.floor(Math.random() * colors.length)];
   }
-};
-title.addEventListener("mouseenter", superEventHandler.mouseEnterChangeText);
-title.addEventListener("mouseleave", superEventHandler.mouseLeaveChangeText);
-window.addEventListener("resize", superEventHandler.windowResizeChangeText);
-window.addEventListener(
-  "contextmenu",
-  superEventHandler.mouseContextMenuChangeText
-);
+  body.style.background = `linear-gradient(to right, ${choice1}, ${choice2})`;
+}
+const body = document.querySelector("body");
+const btn = document.querySelector("button");
+btn.addEventListener("click", btnClick);
